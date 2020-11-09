@@ -21,7 +21,7 @@ pipeline {
 
     stage('up') {
       steps {
-        sh 'docker-compose up -d'
+        sh 'make -v'
       }
     }
 
