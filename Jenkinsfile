@@ -13,5 +13,17 @@ pipeline {
       }
     }
 
+    stage('clone') {
+      steps {
+        git(url: 'https://github.com/irvinstone/ws-biblioteca', branch: 'master')
+      }
+    }
+
+    stage('up') {
+      steps {
+        sh 'docker-compose up -d'
+      }
+    }
+
   }
 }
