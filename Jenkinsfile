@@ -9,7 +9,7 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             ws(dir: '/workspace') {
               sh 'pwd && ls'
@@ -35,7 +35,7 @@ pipeline {
 
     stage('test') {
       steps {
-        sh 'curl 127.0.0.1'
+        sh 'docker run --rm --add-host host.docker.internal:host-gateway curlimages/curl curl host.docker.internal'
       }
     }
 
