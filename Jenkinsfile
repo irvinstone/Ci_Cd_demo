@@ -1,21 +1,10 @@
 pipeline {
-  agent {
-    docker {
-      image 'python:3.5.1'
-    }
-
-  }
+  agent any
   stages {
-    stage('build') {
-      steps {
-        sh 'python --version'
-        sh 'docker ps'
-      }
-    }
-
     stage('clone') {
       steps {
         git(url: 'https://github.com/irvinstone/ws-biblioteca', branch: 'master')
+        sh 'docker-compose -v'
       }
     }
 
