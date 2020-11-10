@@ -3,12 +3,17 @@ pipeline {
   stages {
     stage('clone') {
       steps {
-        git(url: 'https://github.com/irvinstone/ws-biblioteca', branch: 'master')
-        sh 'docker-compose -v'
+        git(url: 'https://github.com/xiaopeng163/docker-compose-flask', branch: 'master')
       }
     }
 
-    stage('BuildApp') {
+    stage('build') {
+      steps {
+        sh 'docker-compose build'
+      }
+    }
+
+    stage('run') {
       steps {
         sh 'docker-compose up -d'
       }
