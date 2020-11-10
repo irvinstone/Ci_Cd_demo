@@ -20,6 +20,7 @@ pipeline {
     }
 
     stage('up') {
+      agent any
       environment {
         PATH = '$PATH:/usr/local/bin'
       }
