@@ -20,6 +20,9 @@ pipeline {
     }
 
     stage('up') {
+      environment {
+        PATH = '$PATH:/usr/local/bin'
+      }
       steps {
         sh 'docker ps'
         sh 'docker-compose -v'
