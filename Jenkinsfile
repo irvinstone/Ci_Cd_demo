@@ -32,5 +32,11 @@ pipeline {
       }
     }
 
+    stage('BuildApp') {
+      steps {
+        sh 'docker-compose up -d'
+      }
+    }
+
   }
 }
