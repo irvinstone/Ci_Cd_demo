@@ -5,7 +5,10 @@ pipeline {
       parallel {
         stage('clone') {
           steps {
-            git(url: 'https://github.com/xiaopeng163/docker-compose-flask', branch: 'master')
+            ws(dir: '/workdir') {
+              git(url: 'https://github.com/xiaopeng163/docker-compose-flask', branch: 'master')
+            }
+
           }
         }
 
@@ -36,6 +39,12 @@ pipeline {
     stage('test') {
       steps {
         sh 'docker run --rm --add-host host.docker.internal:host-gateway curlimages/curl curl host.docker.internal'
+      }
+    }
+
+    stage('clean') {
+      steps {
+        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true)
       }
     }
 
