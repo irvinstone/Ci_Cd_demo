@@ -20,10 +20,6 @@ pipeline {
     }
 
     stage('up') {
-      agent any
-      environment {
-        PATH = '$PATH:/usr/local/bin'
-      }
       steps {
         sh 'curl -L --fail https://github.com/docker/compose/releases/download/1.27.4/run.sh -o /usr/local/bin/docker-compose'
         sh 'chmod +x /usr/local/bin/docker-compose'
