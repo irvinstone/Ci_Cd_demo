@@ -3,7 +3,8 @@ version: "3"
 services:
   jenkins:
     user: root
-    image: "jenkinsci/blueocean:1.23.1"
+    #image: "jenkinsci/blueocean:1.23.1"
+    build: .
     ports:
       - "8080:8080"
     volumes:
