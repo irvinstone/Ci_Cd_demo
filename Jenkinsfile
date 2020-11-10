@@ -12,15 +12,21 @@ pipeline {
 
     stage('build') {
       steps {
-        sh 'docker-compose stop'
-        sh 'docker-compose down'
-        sh 'docker-compose build'
+        dir(path: '/workdir') {
+          sh 'docker-compose stop'
+          sh 'docker-compose down'
+          sh 'docker-compose build'
+        }
+
       }
     }
 
     stage('run') {
       steps {
-        sh 'docker-compose up -d'
+        dir(path: '/workdir') {
+          sh 'docker-compose up -d'
+        }
+
       }
     }
 
