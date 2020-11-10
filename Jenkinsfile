@@ -2,8 +2,22 @@ pipeline {
   agent any
   stages {
     stage('clone') {
-      steps {
-        git(url: 'https://github.com/xiaopeng163/docker-compose-flask', branch: 'master')
+      parallel {
+        stage('clone') {
+          steps {
+            git(url: 'https://github.com/xiaopeng163/docker-compose-flask', branch: 'master')
+          }
+        }
+
+        stage('') {
+          steps {
+            ws(dir: '/workspace') {
+              sh 'pwd && ls'
+            }
+
+          }
+        }
+
       }
     }
 
